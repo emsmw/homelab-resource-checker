@@ -8,3 +8,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+#config_secret
+config_secret.py
