@@ -1,5 +1,7 @@
 import psutil
 import math
+import config_secret
+from colorama import Fore, Style
 
 def get_mem_status():
     BAR_LENGTH = 30
@@ -12,11 +14,10 @@ def get_mem_status():
     bar_filled_length = int((math.ceil(used_memory_percentage) / 100) * BAR_LENGTH)
     bar = "█" * bar_filled_length + " " * (BAR_LENGTH - bar_filled_length)
 
+    color = Fore.RED if used_memory_percentage >= config_secret.MEMORY_WARNING_PERCENT else Fore.GREEN
 
-    print("=" * 70)
-    print("                        MEMORY USAGE                       ")
-    print("=" * 70)
+    print("[MEMORY USAGE]")
     print(f"Total Memory: {memory_total_gb:5.1f} GB")
     print(f"Used Memory : {memory_used_gb:5.1f} GB")
     print(f"Free Memory : {memory_free_gb:5.1f} GB")
-    print(f"[{bar}] {math.ceil(used_memory_percentage):5.0f}% used")
+    print(f"[{bar}] {color}{math.ceil(used_memory_percentage):5.0f}% used{Style.RESET_ALL}")

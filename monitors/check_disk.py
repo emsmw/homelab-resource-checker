@@ -1,6 +1,8 @@
 import psutil
 import math
 import os
+import config_secret
+from colorama import Fore, Style
 
 def get_disk_status():
 
@@ -32,11 +34,9 @@ def get_disk_status():
             "bar_length": bar_length,
             "path": path
         }
-
-    print("=" * 70)
-    print("                        DISK USAGE                        ")
-    print("=" * 70)
-
+    print("[DISK USAGE]\n")
+    color = Fore.RED if rounded_used_percentage >= config_secret.MEMORY_WARNING_PERCENT else Fore.GREEN
+    
     for drive, stats in disk_data.items():
         bar = "█" * stats["bar_length"] + " " * (BAR_LENGTH - stats["bar_length"])
-        print(f"{drive:<15} [{bar}] {stats['percent']}% used")
+        print(f"{drive:<15} [{bar}] {color}{stats['percent']}% used{Style.RESET_ALL}")

@@ -9,9 +9,15 @@ TIMESTAMP = datetime.now(ZoneInfo("America/Toronto")).strftime("%Y-%m-%d %H:%M:%
 
 def main():
     try:
+        print("="*80)
+        print("                         CPU MEMORY DISK STATUS                      ")
+        print("="*80)
         get_cpu_status()
+        print("")
         get_mem_status()
+        print("")
         get_disk_status()
+        print("")
     except Exception as e:
         print(f"An error occurred: {e}")
     print(f"Scan time: {TIMESTAMP}")
