@@ -48,7 +48,7 @@ homelab-cpu-disk-mem-usage-alerts/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/homelab-resource-monitor.git
+git clone https://github.com/emsmw/homelab-resource-monitor.git
 cd homelab-resource-monitor
 ```
 
